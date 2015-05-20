@@ -1,6 +1,7 @@
 sample = [.9 .8;.1 .3;.2 .6]
 training=[0 0;.5 .5;1 1]
 group = [1;2;3]
+group = [group;4]
 class = knnclassify(sample, training, group)
 
 
