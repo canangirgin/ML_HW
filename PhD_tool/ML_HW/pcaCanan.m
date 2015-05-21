@@ -1,4 +1,4 @@
-function model = pca(train_data, n);
+function model = pcaCanan(train_data, n);
 
 %% Init
 model = [];

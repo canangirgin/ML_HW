@@ -1,19 +1,19 @@
-function results = k_NN(train_data, train_imageIds, test_data, test_imageIds, K);
+function results = k_NN(train_data, train_imageIds, test_data, K);
 
 
 %% Init 
 results = [];
 
 %% Check inputs
-if nargin ~=5
+if nargin ~=4
     disp('Wrong number of input parameters! The function requires at least four input arguments.')
     return;
 end
 
-%check test and train size is same
+%check test and train column size is same
 
-if length(train_data)~=length(test_data)
-    disp('Train and test feature sizes are not the same')
+if size(train_data)~=size(test_data)
+    disp('Train and test column feature sizes are not the same')
     return;
 end
 
