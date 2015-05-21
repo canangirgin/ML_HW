@@ -12,7 +12,7 @@
 % Note: discriminant coefficients are stored in W in the order of unique(Target)
 %
 
-function W = LDA2(Input,Target,Priors)
+function W = LDA(Input,Target,Priors)
 
 % Determine size of input data
 [n m] = size(Input);

@@ -9,24 +9,24 @@ load 'Data2.mat';
 %load 'Data4.mat';
 %load 'Data5.mat';
 
-[N M] = size(X);
+[N M] = size(train_data);
 %verinin X giri?lerini de 0 ve 1 aral???na normalize etmeliyiz
-X=(X-repmat(min(X),N,1))./(repmat(max(X),N,1)-repmat(min(X),N,1));
+train_dataLDA=(train_data-repmat(min(train_data),N,1))./(repmat(max(train_data),N,1)-repmat(min(train_data),N,1));
 
 % LDA katsay?lar?n? hesapla
-W = LDA(X, D);
+W = LDA(train_dataLDA, D);
 
 % Verinin LDA katsay?lar?na göre do?rusal sonuçlar?n? hesapla
-L = [ones(N,1) X] * W';
+L = [ones(N,1) train_dataLDA] * W';
 
 % S?n?f olas?l?klar?n? hesapla
 P = exp(L) ./ repmat(sum(exp(L),2),[1 2]);
 
 figure;
 subplot(1,2,1);
-plot(X(D==1,1),X(D==1,2),'r.');
+plot(train_dataLDA(D==1,1),X(D==1,2),'r.');
 hold on;
-plot(X(D==0,1),X(D==0,2),'b.');
+plot(train_dataLDA(D==0,1),X(D==0,2),'b.');
 
 subplot(1,2,2);
 plot(P(D==1,1),P(D==1,2),'r.');

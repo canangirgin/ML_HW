@@ -51,39 +51,22 @@ if(loadImageOk)
  sprintf('Score = %d \n',score)
    
  %% using PCA
+ disp(' **PCA**')
 [coef train_data_pca]=pca(train_data);
 m=mean(train_data);
 test_data_pca=(test_data-repmat(m,[280,1]))*coef;
 resultsKnn2=k_NN(train_data_pca,train_imageIds,test_data_pca,1);
-scorePca=evaulate_results(resultsKnn2,test_imageIds);
-sprintf('Score = %d \n',scorePca);
+scorePCA=evaulate_results(resultsKnn2,test_imageIds);
+sprintf('Score = %d \n',scorePCA);
 
 %% using LDA
+% disp(' **LDA**')
+% resultLDA=classify(test_data,train_data,train_imageIds,'linear');
+% scoreLDA=classperf(test_imageIds,resultLDA);
+% sprintf('Score = %d \n',scoreLDA);
 
-result = lda();
+%% Sil
 
+W= LDA(train_data,train_imageIds);
 
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+end
